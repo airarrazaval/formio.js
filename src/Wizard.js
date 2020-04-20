@@ -77,6 +77,14 @@ export default class Wizard extends Webform {
     this.page = 0;
     const onReady = super.init();
     this.setComponentSchema();
+
+    // Set default values for all components
+    this.everyComponent((component) => {
+      if (component.isInputComponent) {
+        component.setValue(component.defaultValue);
+      }
+    });
+
     return onReady;
   }
 
